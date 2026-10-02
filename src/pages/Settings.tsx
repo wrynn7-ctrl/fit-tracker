@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CloudSync } from '../components/CloudSync';
 import { exportData, useStore } from '../store';
 import type { Units } from '../types';
 
@@ -38,8 +39,10 @@ export function Settings() {
       </header>
 
       <section className="card stack">
-        <label className="field">
-          <span className="muted small">Weight units</span>
+        <div className="field" role="group" aria-labelledby="units-label">
+          <span className="muted small" id="units-label">
+            Weight units
+          </span>
           <div className="chips">
             {(['lb', 'kg'] as Units[]).map((u) => (
               <button key={u} className={`chip ${settings.units === u ? 'active' : ''}`} onClick={() => setSettings({ units: u })}>
@@ -47,7 +50,7 @@ export function Settings() {
               </button>
             ))}
           </div>
-        </label>
+        </div>
         <label className="field">
           <span className="muted small">Default rest timer (seconds)</span>
           <input
@@ -61,9 +64,11 @@ export function Settings() {
         </label>
       </section>
 
+      <CloudSync />
+
       <section className="card stack">
         <h2>Data</h2>
-        <p className="muted small">Your data is stored on this device only. Export a backup to move it or keep it safe.</p>
+        <p className="muted small">Your data is stored on this device (and in your account if cloud sync is on). Export a JSON backup any time.</p>
         <button className="btn block" onClick={doExport}>
           Export backup (JSON)
         </button>
