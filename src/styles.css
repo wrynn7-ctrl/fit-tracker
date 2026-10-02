@@ -173,3 +173,5 @@ h2 { font-size: 1.05rem; margin: 0 0 0.5rem; }
 .cal-day.on { background: var(--accent); color: var(--accent-ink); font-weight: 700; }
 .cal-day.today { outline: 1px solid var(--accent); }
 .cal-day.future { opacity: 0.35; }
+.error-text { color: var(--danger); }
+code { font-size: 0.85em; background: var(--surface-2); padding: 1px 4px; border-radius: 4px; }
